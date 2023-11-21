@@ -15,8 +15,6 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		System.out.println("Hola Mundo ");
 		System.out.println("Soy Jose Jimenez y Romina Guevara");
 		System.out.println("Cambio en la misma Rama");
-		System.out.println("Este es un cambio para un taller 4 ");
-		System.out.println("Este es el taller 4.2");
 	}
 }
 
