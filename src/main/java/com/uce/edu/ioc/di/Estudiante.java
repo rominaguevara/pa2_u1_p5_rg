@@ -3,6 +3,8 @@ package com.uce.edu.ioc.di;
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
+
+
 @Component
 public class Estudiante {
 	
