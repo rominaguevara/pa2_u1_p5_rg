@@ -1,16 +1,11 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.ioc.di.Estudiante;
 import com.uce.edu.repository.modelo.Materia;
-import com.uce.edu.service.IMateriaService;
 
 @SpringBootApplication
 public class Pa2U1P5RgApplication implements CommandLineRunner {
@@ -41,9 +36,6 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		System.out.println(this.materia2);
 		System.out.println(this.materia1);
 		System.out.println(this.materia);
-		
-		System.out.println("----");
-		
 	}
 }
 
