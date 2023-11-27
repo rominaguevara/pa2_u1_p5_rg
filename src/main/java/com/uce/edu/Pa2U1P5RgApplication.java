@@ -25,6 +25,8 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 	}
 	
 	public void run(String... args) throws Exception{
+		
+		
 		// 1.Crear las cuentas
 				CuentaBancaria ctaOrigen = new CuentaBancaria();
 				ctaOrigen.setCedulaPropietario("1750888404");
