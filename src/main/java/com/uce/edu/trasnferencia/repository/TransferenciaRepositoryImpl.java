@@ -10,17 +10,17 @@ import com.uce.edu.trasnferencia.repository.modelo.Transferencia;
 @Repository
 public class TransferenciaRepositoryImpl implements ITransferenciaRepository {
 
-private static List<Transferencia> base = new ArrayList<Transferencia>();
-	
+	private static List<Transferencia> base = new ArrayList<Transferencia>();
+
 	@Override
 	public Transferencia seleccionar(String numero) {
 		// TODO Auto-generated method stub
-		for(Transferencia trans:base) {
-			if(trans.getNumero().equals(numero)) {
+		for (Transferencia trans : base) {
+			if (trans.getNumero().equals(numero)) {
 				return trans;
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -43,6 +43,12 @@ private static List<Transferencia> base = new ArrayList<Transferencia>();
 		Transferencia trans = this.seleccionar(numero);
 		base.remove(trans);
 
+	}
+
+	@Override
+	public List<Transferencia> seleccionarTodos() {
+		// TODO Auto-generated method stub
+		return base;
 	}
 
 }
