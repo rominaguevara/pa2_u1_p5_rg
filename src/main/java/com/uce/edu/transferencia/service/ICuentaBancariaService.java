@@ -14,5 +14,5 @@ public interface ICuentaBancariaService {
 
 	public void eliminar(String numero);
 	
-	public void depositar(String numeroOrigen, String numeroDestino, BigDecimal monto);
+	public void depositar(String numeroCuenta, BigDecimal monto);
 }
