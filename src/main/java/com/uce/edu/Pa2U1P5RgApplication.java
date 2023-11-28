@@ -69,5 +69,6 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		CuentaBancaria ctaDeposito = this.iCuentaBancariaService.buscar("1234");
 		System.out.println("" + ctaDeposito);
 
+		//28/11/2023
 	}
 }
