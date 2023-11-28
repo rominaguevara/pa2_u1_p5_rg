@@ -62,7 +62,7 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
 		System.out.println(ctaDestino1);
 
-		System.out.println("\nContador\n"); // Construir un reporte del estado de cuenta
+		System.out.println("\n"); 
 
 		// Deposito
 		this.iCuentaBancariaService.depositar("1234", new BigDecimal(100));
