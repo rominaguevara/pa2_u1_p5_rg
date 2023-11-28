@@ -17,7 +17,6 @@ import com.uce.edu.trasnferencia.repository.modelo.Transferencia;
 @SpringBootApplication
 public class Pa2U1P5RgApplication implements CommandLineRunner {
 
-	
 	@Autowired
 	private ITransferenciaService iTransferenciaService;
 
@@ -43,33 +42,32 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		ctaDestino.setSaldo(new BigDecimal(200));
 		this.iCuentaBancariaService.guardar(ctaDestino);
 
-		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(10));		
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(10));
+
 		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(10));
 		this.iTransferenciaService.realizar("5678", "1234", new BigDecimal(10));
-		
-		//Construir un reporte del estado de cuenta de todas las transferencias
+
+		// Construir un reporte del estado de cuenta de todas las transferencias
 		System.out.println("\n");
 		List<Transferencia> lista = this.iTransferenciaService.buscarTodos();
-		int indice =0;
-		for(Transferencia trans : lista) {
+		int indice = 0;
+		for (Transferencia trans : lista) {
 			indice++;
-			System.out.println(indice + ":" + trans);		
-		}	
-		
-		//Transferencias
+			System.out.println(trans + " : " + trans.getNumero());
+		}
+		System.out.println("\n");
 		CuentaBancaria ctaOrigen1 = this.iCuentaBancariaService.buscar("1234");
 		System.out.println(ctaOrigen1);
 
 		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
 		System.out.println(ctaDestino1);
-		
-		//Deposito
-		System.out.println("\n");
+
+		System.out.println("\nContador\n"); // Construir un reporte del estado de cuenta
+
+		// Deposito
 		this.iCuentaBancariaService.depositar("1234", new BigDecimal(100));
 		CuentaBancaria ctaDeposito = this.iCuentaBancariaService.buscar("1234");
-		System.out.println(""+ ctaDeposito);
-		
-		
-		
+		System.out.println("" + ctaDeposito);
+
 	}
 }

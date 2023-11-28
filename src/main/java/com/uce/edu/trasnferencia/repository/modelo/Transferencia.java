@@ -20,9 +20,7 @@ public class Transferencia {
 				+ cuentaOrigen + ", cuentaDestino=" + cuentaDestino + "]";
 	}
 
-	
 	// SET Y GET
-
 
 	public String getNumero() {
 		return numero;
@@ -65,4 +63,3 @@ public class Transferencia {
 	}
 
 }
-
