@@ -2,23 +2,26 @@ package com.uce.edu.trasnferencia.repository.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class Transferencia {
+	
+	//private static final AtomicInteger contadorTransferencias = new AtomicInteger(0);
 
 	private String numero;
-	private LocalDateTime fecha;
-	private BigDecimal monto;
-	private CuentaBancaria cuentaOrigen;
-	private CuentaBancaria cuentaDestino;
-
-	@Override
-	public String toString() {
-		return "Transferencia [numero=" + numero + ", fecha=" + fecha + ", monto=" + monto + ", cuentaOrigen="
-				+ cuentaOrigen + ", cuentaDestino=" + cuentaDestino + "]";
-	}
+    private LocalDateTime fecha;
+    private BigDecimal monto;
+    private CuentaBancaria cuentaOrigen;
+    private CuentaBancaria cuentaDestino;
+    
+    @Override
+    public String toString() {
+        return "Transferencia [numero=" + numero + ", fecha=" + fecha + ", monto=" + monto + ", cuentaOrigen="
+                + cuentaOrigen + ", cuentaDestino=" + cuentaDestino + "]";
+    }
 
 	
 	// SET Y GET
