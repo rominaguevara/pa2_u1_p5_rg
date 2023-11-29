@@ -17,12 +17,36 @@ import com.uce.edu.trasnferencia.repository.modelo.Transferencia;
 @SpringBootApplication
 public class Pa2U1P5RgApplication implements CommandLineRunner {
 
+	//////////////////////////////////////////////////////////////
+	///INYECCIONES///
+	/*
+	 * //inyección por constructor 
+	 * private ITransferenciaService iTransferenciaService;
+	 * 
+	 * @Autowired 
+	 * public Pa2U1P5RgApplication(ITransferenciaService iTransServi) {
+	 * this.iTransferenciaService = iTransServi; 
+	 * }
+	 */
+
+	/*
+	 * //inyección por método 
+	 * private ITransferenciaService iTransferenciaService;
+	 * 
+	 * @Autowired 
+	 * public void setiTransferenciaService(ITransferenciaService iTransferenciaService) { 
+	 * this.iTransferenciaService = iTransferenciaService;
+	 * }
+	 */
+
+	// inyección por atributo
 	@Autowired
 	private ITransferenciaService iTransferenciaService;
-
 	@Autowired
 	private ICuentaBancariaService iCuentaBancariaService;
 
+////////////////////////////////////////////////////////////////////
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P5RgApplication.class, args);
 	}
@@ -62,13 +86,13 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
 		System.out.println(ctaDestino1);
 
-		System.out.println("\n"); 
+		System.out.println("\n");
 
 		// Deposito
 		this.iCuentaBancariaService.depositar("1234", new BigDecimal(100));
 		CuentaBancaria ctaDeposito = this.iCuentaBancariaService.buscar("1234");
 		System.out.println("" + ctaDeposito);
 
-		//28/11/2023
+		// 28/11/2023
 	}
 }
