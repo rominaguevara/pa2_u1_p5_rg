@@ -1,49 +1,31 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.transferencia.service.ICuentaBancariaService;
-import com.uce.edu.transferencia.service.ITransferenciaService;
-import com.uce.edu.trasnferencia.repository.modelo.CuentaBancaria;
-import com.uce.edu.trasnferencia.repository.modelo.Transferencia;
+import com.uce.edu.inventario.repository.modelo.Bodega;
+import com.uce.edu.inventario.repository.modelo.Producto;
+import com.uce.edu.inventario.service.IBodegaService;
+import com.uce.edu.inventario.service.IInventarioService;
+import com.uce.edu.inventario.service.IProductoService;
+
 
 @SpringBootApplication
 public class Pa2U1P5RgApplication implements CommandLineRunner {
 
-	//////////////////////////////////////////////////////////////
-	///INYECCIONES///
-	/*
-	 * //inyección por constructor 
-	 * private ITransferenciaService iTransferenciaService;
-	 * 
-	 * @Autowired 
-	 * public Pa2U1P5RgApplication(ITransferenciaService iTransServi) {
-	 * this.iTransferenciaService = iTransServi; 
-	 * }
-	 */
-
-	/*
-	 * //inyección por método 
-	 * private ITransferenciaService iTransferenciaService;
-	 * 
-	 * @Autowired 
-	 * public void setiTransferenciaService(ITransferenciaService iTransferenciaService) { 
-	 * this.iTransferenciaService = iTransferenciaService;
-	 * }
-	 */
-
-	// inyección por atributo
 	@Autowired
-	private ITransferenciaService iTransferenciaService;
+	private IProductoService iProductoService;
+	
 	@Autowired
-	private ICuentaBancariaService iCuentaBancariaService;
+	private IInventarioService iInventarioService;
+	
+	@Autowired
+	private IProductoService productoService;
+	
+	@Autowired
+	private IBodegaService bodegaService;
 
 ////////////////////////////////////////////////////////////////////
 	
@@ -52,47 +34,43 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 	}
 
 	public void run(String... args) throws Exception {
-
-		// 1.Crear las cuentas
-		CuentaBancaria ctaOrigen = new CuentaBancaria();
-		ctaOrigen.setCedulaPropietario("1750888404");
-		ctaOrigen.setNumero("1234");
-		ctaOrigen.setSaldo(new BigDecimal(100));
-		this.iCuentaBancariaService.guardar(ctaOrigen);
-
-		CuentaBancaria ctaDestino = new CuentaBancaria();
-		ctaDestino.setCedulaPropietario("1719608729");
-		ctaDestino.setNumero("5678");
-		ctaDestino.setSaldo(new BigDecimal(200));
-		this.iCuentaBancariaService.guardar(ctaDestino);
-
-		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(10));
-
-		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(10));
-		this.iTransferenciaService.realizar("5678", "1234", new BigDecimal(10));
-
-		// Construir un reporte del estado de cuenta de todas las transferencias
-		System.out.println("\n");
-		List<Transferencia> lista = this.iTransferenciaService.buscarTodos();
-		int indice = 0;
-		for (Transferencia trans : lista) {
-			indice++;
-			System.out.println(trans + " : " + trans.getNumero());
-		}
-		System.out.println("\n");
-		CuentaBancaria ctaOrigen1 = this.iCuentaBancariaService.buscar("1234");
-		System.out.println(ctaOrigen1);
-
-		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
-		System.out.println(ctaDestino1);
-
-		System.out.println("\n");
-
-		// Deposito
-		this.iCuentaBancariaService.depositar("1234", new BigDecimal(100));
-		CuentaBancaria ctaDeposito = this.iCuentaBancariaService.buscar("1234");
-		System.out.println("" + ctaDeposito);
-
-		// 01/12/2023
+		
+		//1.-Crear dos productos "P1 y P2"
+		Producto p1 = new Producto();
+		p1.setCodigoBarras("123455");
+		p1.setNombre("HP 15 laptop");
+		p1.setStock(0);
+		
+		this.iProductoService.guardar(p1);
+		
+		Producto p2 = new Producto();
+		p2.setCodigoBarras("1597863");
+		p2.setNombre("Teclado HP");
+		p2.setStock(0);
+		
+		this.iProductoService.guardar(p2);
+		
+		//2.-Crear una bodega "B1" con capacidad cualquiera
+		Bodega b1 = new Bodega();
+		b1.setCodigo("123456789");
+		b1.setNombre("BODEGA B1");
+		b1.setDireccion("Sector Universidad Central");
+		b1.setCapacidad(200);
+		
+		//3.-Registar Inventario
+		  //50 unidades P1 en B1
+		this.iInventarioService.registar("123456789", "123455", 50);
+		  //100 unidades P2 en B1
+		this.iInventarioService.registar("123456789", "1597863", 100);
+		  //20 unidades P1 en B1
+		this.iInventarioService.registar("123456789", "123455", 20);
+		
+		//4.-Buscar producto P1 y P2 y se imprime
+		this.productoService.buscar("123455");
+		System.out.println(p1);
+		
+		this.productoService.buscar("1597863");
+		System.out.println(p2);
+		
 	}
 }

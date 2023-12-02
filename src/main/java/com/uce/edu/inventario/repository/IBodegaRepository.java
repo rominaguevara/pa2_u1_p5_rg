@@ -3,7 +3,7 @@ package com.uce.edu.inventario.repository;
 import com.uce.edu.inventario.repository.modelo.Bodega;
 
 public interface IBodegaRepository {
-	
+
 	// CRUD
 	public Bodega seleccionar(String codigo);
 

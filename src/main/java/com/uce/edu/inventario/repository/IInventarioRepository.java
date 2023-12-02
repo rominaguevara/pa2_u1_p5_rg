@@ -1,6 +1,7 @@
 package com.uce.edu.inventario.repository;
 
 import com.uce.edu.inventario.repository.modelo.Inventario;
+import com.uce.edu.inventario.repository.modelo.Producto;
 
 public interface IInventarioRepository {
 
@@ -12,5 +13,7 @@ public interface IInventarioRepository {
 	public void actualizar(Inventario inventario);
 
 	public void eliminar(String codigo);
+	
+	Inventario seleccionarEliminar(String codigo);
 
 }
