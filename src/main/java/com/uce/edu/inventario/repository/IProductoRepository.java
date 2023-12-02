@@ -13,6 +13,6 @@ public interface IProductoRepository {
 
 	public void eliminar(String codigoBarras);
 
-	Producto seleccionarEliminar(String codigoBarras);
+	public Producto seleccionarEliminar(String codigoBarras);
 
 }

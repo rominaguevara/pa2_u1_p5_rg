@@ -16,10 +16,10 @@ import com.uce.edu.inventario.repository.modelo.Producto;
 public class InventarioServiceImpl implements IInventarioService {
 
 	@Autowired
-	private IBodegaRepository bodegaRepository;
+	private IProductoRepository productoRepository;
 
 	@Autowired
-	private IProductoRepository productoRepository;
+	private IBodegaRepository bodegaRepository;
 
 	@Autowired
 	private IInventarioRepository inventarioRepository;
@@ -49,18 +49,17 @@ public class InventarioServiceImpl implements IInventarioService {
 	}
 
 	@Override
-	public void registar(String codigoBodega, String codigoBarras, Integer stock) {
+	public void registrar(String codigoBodega, String codigoBarras, Integer stock) {
+		// TODO Auto-generated method stub
 		// 1. Obtenemos la bodega
 		Bodega bodega = this.bodegaRepository.seleccionar(codigoBodega);
 		// 2. Obtenemos el producto
 		Producto producto = this.productoRepository.seleccionar(codigoBarras);
-		
 		// 3. obtenemos el stock y lo actualizamos
 		Integer stockActual = producto.getStock();
 		Integer stockFinal = stockActual + stock;
 		producto.setStock(stockFinal);
 		this.productoRepository.actualizar(producto);
-		
 		// 4. creamos el inventario y seteamos
 		Inventario inv = new Inventario();
 		inv.setCodigo("23423");
@@ -71,5 +70,4 @@ public class InventarioServiceImpl implements IInventarioService {
 		this.inventarioRepository.insertar(inv);
 		System.out.println("Registro con exito!");
 	}
-
 }

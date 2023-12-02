@@ -12,4 +12,6 @@ public interface IBodegaRepository {
 	public void actualizar(Bodega bodega);
 
 	public void eliminar(String codigo);
+
+	public Bodega seleccionarEliminar(String codigo);
 }

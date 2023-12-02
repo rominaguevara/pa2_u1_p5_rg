@@ -3,6 +3,7 @@ package com.uce.edu.inventario.service;
 import com.uce.edu.inventario.repository.modelo.Inventario;
 
 public interface IInventarioService {
+	
 	// CRUD
 	public Inventario buscar(String codigo);
 
@@ -12,5 +13,6 @@ public interface IInventarioService {
 
 	public void eliminar(String codigo);
 
-	public void registar(String codigoBodega, String codigoBarras, Integer stock);
+	public void registrar(String codigoBodega, String codigoBarras, Integer stock);
+	
 }

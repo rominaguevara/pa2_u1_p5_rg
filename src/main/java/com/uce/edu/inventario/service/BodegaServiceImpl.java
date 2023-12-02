@@ -11,7 +11,7 @@ public class BodegaServiceImpl implements IBodegaService {
 
 	@Autowired
 	private IBodegaRepository bodegaRepository;
-
+	
 	@Override
 	public Bodega buscar(String codigo) {
 		// TODO Auto-generated method stub

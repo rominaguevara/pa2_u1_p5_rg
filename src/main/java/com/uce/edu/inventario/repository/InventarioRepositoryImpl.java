@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.inventario.repository.modelo.Inventario;
-import com.uce.edu.inventario.repository.modelo.Producto;
 
 @Repository
 public class InventarioRepositoryImpl implements IInventarioRepository {
@@ -19,16 +18,28 @@ public class InventarioRepositoryImpl implements IInventarioRepository {
 
 		for (Inventario inventario : base) {
 			if (inventario.getCodigo().equals(codigo)) {
-				Inventario invt = new Inventario();
-				invt.setFechaIngreso(inventario.getFechaIngreso());
-				invt.setBodega(inventario.getBodega());
-				invt.setProducto(inventario.getProducto());
-				return invt;
+				Inventario inv = new Inventario();
+				inv.setCodigo(inventario.getCodigo());
+				inv.setBodega(inventario.getBodega());
+				inv.setFechaIngreso(inventario.getFechaIngreso());
+				inv.setProducto(inventario.getProducto());
+				return inv;
 			}
 		}
 		return null;
 	}
 
+	@Override
+	public Inventario seleccionarEliminar(String codigo) {
+		// TODO Auto-generated method stub
+		for (Inventario cuenta : base) {
+			if (cuenta.getCodigo().equals(codigo)) {
+				return cuenta;
+			}
+		}
+
+		return null;
+	}
 	@Override
 	public void insertar(Inventario inventario) {
 		// TODO Auto-generated method stub
@@ -45,20 +56,7 @@ public class InventarioRepositoryImpl implements IInventarioRepository {
 	@Override
 	public void eliminar(String codigo) {
 		// TODO Auto-generated method stub
-		Inventario inventario = this.seleccionar(codigo);
-		base.remove(inventario);
+		Inventario cuenta = this.seleccionarEliminar(codigo);
+		base.remove(cuenta);
 	}
-
-	@Override
-	public Producto seleccionarEliminar(String codigoBarras) {
-		// TODO Auto-generated method stub
-		for (Producto cuenta : base) {
-			if (cuenta.getCodigoBarras().equals(codigoBarras)) {
-				return cuenta;
-			}
-		}
- 
-		return null;
-	}
-
 }

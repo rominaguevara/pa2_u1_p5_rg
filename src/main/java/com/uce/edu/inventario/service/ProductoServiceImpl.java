@@ -10,30 +10,30 @@ import com.uce.edu.inventario.repository.modelo.Producto;
 public class ProductoServiceImpl implements IProductoService {
 
 	@Autowired
-	private IProductoRepository iProductoRepository;
+	private IProductoRepository productoRepository;
 
 	@Override
 	public Producto buscar(String codigoBarras) {
 		// TODO Auto-generated method stub
-		return this.iProductoRepository.seleccionar(codigoBarras);
+		return this.productoRepository.seleccionar(codigoBarras);
 	}
 
 	@Override
 	public void guardar(Producto producto) {
 		// TODO Auto-generated method stub
-		this.iProductoRepository.insertar(producto);
+		this.productoRepository.insertar(producto);
 	}
 
 	@Override
 	public void actualizar(Producto producto) {
 		// TODO Auto-generated method stub
-		this.iProductoRepository.actualizar(producto);
+		this.productoRepository.actualizar(producto);
 	}
 
 	@Override
 	public void eliminar(String codigoBarras) {
 		// TODO Auto-generated method stub
-		this.iProductoRepository.eliminar(codigoBarras);
+		this.productoRepository.eliminar(codigoBarras);
 	}
 
 }

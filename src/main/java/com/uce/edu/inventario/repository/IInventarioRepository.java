@@ -14,6 +14,6 @@ public interface IInventarioRepository {
 
 	public void eliminar(String codigo);
 	
-	Inventario seleccionarEliminar(String codigo);
+	public Inventario seleccionarEliminar(String codigo);
 
 }

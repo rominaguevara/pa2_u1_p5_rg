@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.inventario.repository.modelo.Bodega;
+import com.uce.edu.inventario.repository.modelo.Inventario;
 
 @Repository
 public class BodegaRepositoryImpl implements IBodegaRepository {
@@ -18,16 +19,27 @@ public class BodegaRepositoryImpl implements IBodegaRepository {
 
 		for (Bodega bodega : base) {
 			if (bodega.getCodigo().equals(codigo)) {
-				Bodega bodg = new Bodega();
-				bodg.setNombre(bodega.getNombre());
-				bodg.setDireccion(bodega.getDireccion());
-				bodg.setCapacidad(bodega.getCapacidad());
-				return bodg;
+				Bodega bga = new Bodega();
+				bga.setCapacidad(bodega.getCapacidad());
+				bga.setCodigo(bodega.getCodigo());
+				bga.setDireccion(bodega.getDireccion());
+				bga.setNombre(bodega.getNombre());
+				return bga;
 			}
 		}
 		return null;
 	}
+	@Override
+	public Bodega seleccionarEliminar(String codigo) {
+		// TODO Auto-generated method stub
+		for (Bodega cuenta : base) {
+			if (cuenta.getCodigo().equals(codigo)) {
+				return cuenta;
+			}
+		}
 
+		return null;
+	}
 	@Override
 	public void insertar(Bodega bodega) {
 		// TODO Auto-generated method stub
@@ -44,8 +56,7 @@ public class BodegaRepositoryImpl implements IBodegaRepository {
 	@Override
 	public void eliminar(String codigo) {
 		// TODO Auto-generated method stub
-		Bodega bodega = this.seleccionar(codigo);
+		Bodega bodega = this.seleccionarEliminar(codigo);
 		base.remove(bodega);
 	}
-
 }

@@ -23,9 +23,6 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IProductoService productoService;
-	
-	@Autowired
-	private IBodegaService bodegaService;
 
 ////////////////////////////////////////////////////////////////////
 	
@@ -59,18 +56,20 @@ public class Pa2U1P5RgApplication implements CommandLineRunner {
 		
 		//3.-Registar Inventario
 		  //50 unidades P1 en B1
-		this.iInventarioService.registar("123456789", "123455", 50);
+		this.iInventarioService.registrar("123456789", "123455", 50);
 		  //100 unidades P2 en B1
-		this.iInventarioService.registar("123456789", "1597863", 100);
+		this.iInventarioService.registrar("123456789", "1597863", 100);
 		  //20 unidades P1 en B1
-		this.iInventarioService.registar("123456789", "123455", 20);
+		this.iInventarioService.registrar("123456789", "123455", 20);
 		
 		//4.-Buscar producto P1 y P2 y se imprime
-		this.productoService.buscar("123455");
+		p1 = this.productoService.buscar("123455");
 		System.out.println(p1);
-		
-		this.productoService.buscar("1597863");
+		System.out.println("--------------------------");
+		System.out.println("--------------------------");
+		p2 = this.productoService.buscar("1597863");
 		System.out.println(p2);
-		
+
+	
 	}
 }

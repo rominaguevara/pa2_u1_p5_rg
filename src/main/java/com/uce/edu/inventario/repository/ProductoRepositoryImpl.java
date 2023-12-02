@@ -13,18 +13,29 @@ public class ProductoRepositoryImpl implements IProductoRepository {
 
 	@Override
 	public Producto seleccionar(String codigoBarras) {
+		// TODO Auto-generated method stub
 		for (Producto producto : base) {
 			if (producto.getCodigoBarras().equals(codigoBarras)) {
 				Producto prod = new Producto();
+				prod.setCodigoBarras(producto.getCodigoBarras());
 				prod.setNombre(producto.getNombre());
 				prod.setStock(producto.getStock());
-				prod.setCodigoBarras(producto.getCodigoBarras());
 				return prod;
 			}
 		}
 		return null;
 	}
+	@Override
+	public Producto seleccionarEliminar(String codigoBarras) {
+		// TODO Auto-generated method stub
+		for (Producto cuenta : base) {
+			if (cuenta.getCodigoBarras().equals(codigoBarras)) {
+				return cuenta;
+			}
+		}
 
+		return null;
+	}
 	@Override
 	public void insertar(Producto producto) {
 		// TODO Auto-generated method stub
@@ -41,20 +52,7 @@ public class ProductoRepositoryImpl implements IProductoRepository {
 	@Override
 	public void eliminar(String codigoBarras) {
 		// TODO Auto-generated method stub
-		Producto prod = this.seleccionarEliminar(codigoBarras);
-		base.remove(prod);
+		Producto producto = this.seleccionarEliminar(codigoBarras);
+		base.remove(producto);
 	}
-	
-	@Override
-	public Producto seleccionarEliminar(String codigoBarras) {
-		// TODO Auto-generated method stub
-		for (Producto producto : base) {
-			if (producto.getCodigoBarras().equals(codigoBarras)) {
-				return producto;
-			}
-		}
-
-		return null;
-	}
-
 }
