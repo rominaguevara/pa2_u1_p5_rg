@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.inventario.repository.modelo.Inventario;
-import com.uce.edu.inventario.repository.modelo.Producto;
 
 @Repository
 public class InventarioRepositoryImpl implements IInventarioRepository {
@@ -48,17 +47,7 @@ public class InventarioRepositoryImpl implements IInventarioRepository {
 		Inventario inventario = this.seleccionar(codigo);
 		base.remove(inventario);
 	}
-
-	@Override
-	public Producto seleccionarEliminar(String codigoBarras) {
-		// TODO Auto-generated method stub
-		for (Producto cuenta : base) {
-			if (cuenta.getCodigoBarras().equals(codigoBarras)) {
-				return cuenta;
-			}
-		}
- 
-		return null;
-	}
+	
+	//44444444444
 
 }
